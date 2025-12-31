@@ -66,26 +66,15 @@ button:disabled{
 </style>
 </head>
 
-<!-- 🎶 SPECIAL PHOTOS MUSIC -->
-<audio id="photoMusic" autoplay loop>
-  <source src="/music/special.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const photoMusic = document.getElementById("photoMusic");
-  photoMusic.volume = 0.5;
-
-  // browser autoplay block kare to first click pe start
-  document.body.addEventListener("click", () => {
-    photoMusic.play();
-  }, { once: true });
-</script>
-
-
 <body>
 
+<!-- 🎶 SPECIAL PHOTOS MUSIC -->
+<audio id="photoMusic" loop>
+  <source src="music/special.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
-  <img id="photo" src="/images/p1.jpg">
+  <img id="photo" src="images/p1.jpg">
   <div class="message" id="text"></div>
 
   <div class="buttons">
@@ -95,15 +84,25 @@ button:disabled{
 </div>
 
 <script>
+/* 🎵 MUSIC */
+const photoMusic = document.getElementById("photoMusic");
+photoMusic.volume = 0.5;
+
+// autoplay block ho to first click pe start
+document.body.addEventListener("click", () => {
+  photoMusic.play();
+}, { once: true });
+
+/* 📸 PHOTOS */
 const photos = [
-  { img: "/images/p1.jpg", text: "This smile… effortlessly beautiful 🤍" },
-  { img: "/images/p2.jpg", text: "Confidence looks really good on you ✨" },
-  { img: "/images/p3.jpg", text: "Some moments don’t need filters, just feelings 💫" },
-  { img: "/images/p4.jpg", text: "Still my favorite kind of picture ❤️" },
-  { img: "/images/p5.jpg", text: "That innocence… pure, precious, and unforgettable 🍼🤍" },
-  { img: "/images/p6.jpg", text: "Childhood bonds — simple, warm, and forever special 🌼" },
-  { img: "/images/p7.jpg", text: "Tiny hands, big celebrations, endless memories 🎂✨" },
-  { img: "/images/p8.jpg", text: "From that little soul to this beautiful person — what a journey ❤️" }
+  { img: "images/p1.jpg", text: "This smile… effortlessly beautiful 🤍" },
+  { img: "images/p2.jpg", text: "Confidence looks really good on you ✨" },
+  { img: "images/p3.jpg", text: "Some moments don’t need filters, just feelings 💫" },
+  { img: "images/p4.jpg", text: "Still my favorite kind of picture ❤️" },
+  { img: "images/p5.jpg", text: "That innocence… pure, precious, and unforgettable 🍼🤍" },
+  { img: "images/p6.jpg", text: "Childhood bonds — simple, warm, and forever special 🌼" },
+  { img: "images/p7.jpg", text: "Tiny hands, big celebrations, endless memories 🎂✨" },
+  { img: "images/p8.jpg", text: "From that little soul to this beautiful person — what a journey ❤️" }
 ];
 
 let index = 0;
@@ -111,12 +110,10 @@ let index = 0;
 const photo = document.getElementById("photo");
 const text  = document.getElementById("text");
 const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
 
 function updateView(){
   photo.src = photos[index].img;
   text.innerText = photos[index].text;
-
   prevBtn.disabled = index === 0;
 }
 
@@ -127,7 +124,6 @@ function nextPhoto(){
     index++;
     updateView();
   } else {
-    // last photo ke baad
     window.location.href = "family-intro.html";
   }
 }
