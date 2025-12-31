@@ -75,23 +75,13 @@ canvas{
 }
 </style>
 </head>
-<!-- 🎶 FIREWORKS MUSIC -->
-<audio id="fireMusic" autoplay loop>
-  <source src="/music/fireworks.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const fireMusic = document.getElementById("fireMusic");
-  fireMusic.volume = 0.5;
-
-  // browser autoplay block kare to first click pe start
-  document.body.addEventListener("click", () => {
-    fireMusic.play();
-  }, { once: true });
-</script>
-
 
 <body>
+
+<!-- 🎶 FIREWORKS MUSIC -->
+<audio id="fireMusic" loop>
+  <source src="music/fireworks.mp3" type="audio/mpeg">
+</audio>
 
 <canvas id="c"></canvas>
 
@@ -103,6 +93,15 @@ canvas{
 </div>
 
 <script>
+/* 🎵 MUSIC */
+const fireMusic = document.getElementById("fireMusic");
+fireMusic.volume = 0.5;
+
+// autoplay block ho to first click pe start
+document.body.addEventListener("click", () => {
+  fireMusic.play();
+}, { once: true });
+
 /* 🎆 FIREWORKS */
 const canvas = document.getElementById("c");
 const ctx = canvas.getContext("2d");
@@ -151,7 +150,7 @@ function animate(){
 }
 animate();
 
-/* ✨ TEXT POP-POP */
+/* ✨ TEXT POP */
 const text1 = "HAPPY NEW YEAR";
 const text2 = "PRANSSI❤️";
 let i1=0, i2=0;
@@ -201,4 +200,3 @@ function goNext(){
 
 </body>
 </html>
-z
