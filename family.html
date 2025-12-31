@@ -65,26 +65,16 @@ button:disabled{
 }
 </style>
 </head>
-<!-- 🎶 FAMILY MUSIC -->
-<audio id="familyMusic" autoplay loop>
-  <source src="/music/family.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const familyMusic = document.getElementById("familyMusic");
-  familyMusic.volume = 0.4;
-
-  // autoplay block ho to first click pe start
-  document.body.addEventListener("click", () => {
-    familyMusic.play();
-  }, { once: true });
-</script>
-
 
 <body>
 
+<!-- 🎶 FAMILY MUSIC -->
+<audio id="familyMusic" loop>
+  <source src="music/family.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
-  <img id="photo" src="/images/p9.jpg">
+  <img id="photo" src="images/p9.jpg">
   <div class="message" id="text"></div>
 
   <div class="buttons">
@@ -94,17 +84,27 @@ button:disabled{
 </div>
 
 <script>
+/* 🎵 MUSIC */
+const familyMusic = document.getElementById("familyMusic");
+familyMusic.volume = 0.4;
+
+// autoplay block ho to first click pe start
+document.body.addEventListener("click", () => {
+  familyMusic.play();
+}, { once: true });
+
+/* 📸 FAMILY PHOTOS */
 const photos = [
   {
-    img: "/images/p9.jpg",
+    img: "images/p9.jpg",
     text: "Family — jahan se har kahani shuru hoti hai, aur har muskaan ko wajah milti hai 🤍"
   },
   {
-    img: "/images/p10.jpg",
+    img: "images/p10.jpg",
     text: "Papa — kam bolte hain, par har kadam pe saath khade rehte hain 💪❤️"
   },
   {
-    img: "/images/p11.jpg",
+    img: "images/p11.jpg",
     text: "Maa — jinki ek muskaan se duniya safe lagne lagti hai 🤍✨"
   }
 ];
@@ -118,7 +118,6 @@ const prevBtn = document.getElementById("prevBtn");
 function updateView(){
   photo.src = photos[index].img;
   text.innerText = photos[index].text;
-
   prevBtn.disabled = index === 0;
 }
 
