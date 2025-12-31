@@ -60,21 +60,13 @@ button{
 }
 </style>
 </head>
-<audio id="bgMusic" autoplay loop>
-  <source src="/music/soft.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.4;
-
-  document.body.addEventListener("click", () => {
-    music.play();
-  }, { once: true });
-</script>
-
 
 <body>
+
+<!-- 🎶 SOFT BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music/soft.mp3" type="audio/mpeg">
+</audio>
 
 <canvas id="fw"></canvas>
 
@@ -96,13 +88,16 @@ button{
   <button onclick="restart()">Restart 🔁</button>
 </div>
 
-<!-- 🎶 SOFT BACKGROUND MUSIC -->
-<audio id="bgMusic" autoplay loop>
-  <!-- 👇 yaha apna music file daalna -->
-  <source src="/music/soft.mp3" type="audio/mpeg">
-</audio>
-
 <script>
+/* 🎵 MUSIC */
+const music = document.getElementById("bgMusic");
+music.volume = 0.4;
+
+// autoplay block ho to first click pe start
+document.body.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+
 /* 🔁 RESTART */
 function restart(){
   window.location.href = "index.html";
