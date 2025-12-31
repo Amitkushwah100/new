@@ -86,22 +86,12 @@ canvas{
 </style>
 </head>
 
-<audio id="bgMusic" autoplay loop>
-  <source src="/music/soft.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.4;
-
-  // browser block kare to first click pe chale
-  document.body.addEventListener("click", () => {
-    music.play();
-  }, { once: true });
-</script>
-
-
 <body>
+
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music/soft.mp3" type="audio/mpeg">
+</audio>
 
 <canvas id="fw"></canvas>
 
@@ -116,7 +106,16 @@ canvas{
 </div>
 
 <script>
-/* 🎆 SOFT MULTI-COLOR FIREWORKS */
+/* 🎶 MUSIC PLAY */
+const music = document.getElementById("bgMusic");
+music.volume = 0.4;
+
+// autoplay block ho to first click pe start
+document.body.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+
+/* 🎆 FIREWORKS */
 const canvas = document.getElementById("fw");
 const ctx = canvas.getContext("2d");
 canvas.width = innerWidth;
@@ -161,7 +160,7 @@ function animate(){
 setInterval(firework,700);
 animate();
 
-/* 🎬 CINEMATIC TEXT */
+/* 🎬 TEXT */
 const lines=["l1","l2","l3","l4","l5"];
 let i=0;
 
@@ -174,7 +173,6 @@ function showLine(){
 }
 setTimeout(showLine,1500);
 
-/* show next button */
 setTimeout(()=>{
   document.getElementById("nextBtn").classList.add("showBtn");
 },16000);
